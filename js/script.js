@@ -73,8 +73,7 @@ var quotes = [
 
 var found;
 var prevQuoteId;
-var quoteindex;
-let quote_text;
+var quoteobject;
 /*Created the `getRandomQuote` function */
 function getRandomQuote()
 {
@@ -91,7 +90,8 @@ function getRandomQuote()
 	 //Assign to prevQuoteId the randomly selected quote id
 	 prevQuoteId=quotes[ranNum].id;
 	 found=1; //set found to true
-	 return ranNum;
+   return quotes[ranNum];
+ 
  }
  //if the prevQuoteId is equal to random quote id
   if(quotes[ranNum].id==prevQuoteId) 
@@ -102,46 +102,46 @@ function getRandomQuote()
   }
  
  }
-
+ 
  }
  /*Created the `printQuote` function*/
 function printQuote()
 {
   /*Called the `getRandomQuote` function
    and assign it to a variable.*/
-  quoteindex= getRandomQuote();
+  quoteobject= getRandomQuote();
   let s=" ";
-  s+=`<p class="quote"> ${quotes[quoteindex].quote} </p>
-     <p class="source"> ${quotes[quoteindex].source}`;
+  s+=`<p class="quote"> ${quoteobject.quote} </p>
+     <p class="source"> ${quoteobject.source}`;
 
      /*If citation is not specified*/
-  if(quotes[quoteindex].citation.length==0)
+  if(quoteobject.citation.length==0)
   {
     s+="";
   }
   else /*Execute if citation is specified*/
   {
-     s+=` <span class="citation"> ${quotes[quoteindex].citation} </span>`;
+     s+=` <span class="citation"> ${quoteobject.citation} </span>`;
   }
 
   /*If year is not specified*/
-  if(quotes[quoteindex].year.length==0)
+  if(quoteobject.year.length==0)
   {
     s+="";
   }
   else /*Execute if year is specified*/
   {
-    s+=` <span class="year">${quotes[quoteindex].year}</span>`;
+    s+=` <span class="year">${quoteobject.year}</span>`;
   }
 
   /*If tags is not specified*/
-  if(quotes[quoteindex].tags.length==0)
+  if(quoteobject.tags.length==0)
   {
     s+="";
   }
   else /*Execute if tags is specified*/
   {
-    s+= `<span class ="tags">${quotes[quoteindex].tags}<span></p>`
+    s+= `<span class ="tags">${quoteobject.tags}<span></p>`
   }
   /*Generate random colors*/
   var red = Math.floor(Math.random() * 256 );
@@ -156,6 +156,7 @@ function printQuote()
   document.querySelector('body').style.backgroundColor =  "rgb(" + red + ',' + green + ','+ blue + ")" ;
   document.getElementById("quote-box").innerHTML = s;
   }
+ 
 }
 /*Change quote in every 20 seconds*/
 var intervalID = window.setInterval(printQuote, 20000);
