@@ -6,3 +6,4 @@
 - [x] I have added more properties to the quote object.
 - [x] When the quote changes, I have randomly changed the background color of the page.
 - [x] Added functionality for auto-refreshing the quote.
+### Kindly, wait for 20 secs for quote to change.
